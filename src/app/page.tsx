@@ -2,10 +2,13 @@ import { getAllAnalyses } from '@/lib/db';
 import { CompetitiveAnalysis } from '@/lib/db';
 import { XCircle, BarChart3, Clock, CheckCircle, CreditCard, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { isPasswordProtectionEnabled } from '@/lib/auth';
+import { ClientHeaderWrapper } from '@/components/ClientHeaderWrapper';
 
 export default async function Home() {
   let analyses: CompetitiveAnalysis[] = [];
   let error: string | null = null;
+  const requiresAuth = isPasswordProtectionEnabled();
 
   try {
     analyses = await getAllAnalyses();
@@ -15,14 +18,12 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-[#00205B] text-white py-8 px-6 shadow-md">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold mb-2">O2 Competitive Analysis Dashboard</h1>
-          <p className="text-blue-100">
-            Comprehensive insights into market positioning, competitive landscapes, and strategic opportunities
-          </p>
-        </div>
-      </header>
+      <ClientHeaderWrapper requiresAuth={requiresAuth}>
+        <h1 className="text-3xl font-bold mb-2">O2 Competitive Analysis Dashboard</h1>
+        <p className="text-blue-100">
+          Comprehensive insights into market positioning, competitive landscapes, and strategic opportunities
+        </p>
+      </ClientHeaderWrapper>
 
       <main className="max-w-7xl mx-auto px-6 py-8">
 
@@ -144,7 +145,7 @@ export default async function Home() {
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center space-x-2">
                     <span className="text-sm text-gray-500">Avg Score:</span>
-                    <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium">
+                    <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium text-gray-800">
                       {analysis.overall_competitive_sentiments?.length > 0
                         ? Math.round(analysis.overall_competitive_sentiments.reduce((sum, s) => sum + s.score, 0) / analysis.overall_competitive_sentiments.length)
                         : 'N/A'
@@ -153,11 +154,11 @@ export default async function Home() {
                   </div>
                   <div className="flex items-center space-x-2">
                     <span className="text-sm text-gray-500">Currency:</span>
-                    <span className="font-medium">{analysis.currency}</span>
+                    <span className="font-medium text-gray-800">{analysis.currency}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <span className="text-sm text-gray-500">LLM used:</span>
-                    <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium">
+                    <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium text-gray-800">
                       {analysis.llm_provider}
                     </span>
                   </div>

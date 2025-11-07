@@ -173,7 +173,7 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
                 <div key={compIndex} className="flex justify-between items-center p-4 bg-gray-50 rounded-lg border">
                   <div className="flex-1">
                     <div className="flex items-center gap-4 mb-2">
-                      <span className="font-semibold text-lg">{comp.brand}</span>
+                      <span className="font-semibold text-lg text-black-800">{comp.brand}</span>
                       <span className="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full">{comp.contract}</span>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-600">

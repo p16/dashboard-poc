@@ -47,6 +47,11 @@ export interface ProductBreakdown {
   source_URL?: string;
 }
 
+export interface PriceSuggestion {
+  motivation: string;
+  price: number;
+}
+
 export interface O2ProductAnalysis {
   product_name: string;
   data_tier: string;
@@ -55,6 +60,7 @@ export interface O2ProductAnalysis {
   comparable_products: ProductBreakdown[];
   o2_product_sentiments: string[];
   o2_product_changes: string[];
+  price_suggestions?: PriceSuggestion[];
 }
 
 export interface FullDatasetPlan {

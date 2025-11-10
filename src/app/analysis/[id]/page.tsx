@@ -1,6 +1,7 @@
 import { getAnalysisById } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import PriceSummaryComponent from '@/components/PriceSummary';
 import {
   CheckCircle,
   BarChart3,
@@ -181,6 +182,13 @@ export default async function AnalysisPage({ params }: AnalysisPageProps) {
             </div>
           </div>
 
+          {/* Pricing Strategy Overview */}
+          {analysis.o2_products_analysis && analysis.o2_products_analysis.length > 0 && (
+            <PriceSummaryComponent
+              products={analysis.o2_products_analysis}
+              analysisId={id}
+            />
+          )}
 
           {/* O2 Products Analysis */}
           <div className="bg-white shadow-sm rounded-lg p-8 border border-gray-200">

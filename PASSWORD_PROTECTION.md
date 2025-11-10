@@ -2,7 +2,7 @@
 
 ## Overview
 
-Analysis Dashboard now supports optional password protection. This feature allows you to secure access to the dashboard with a password while maintaining session-based authentication.
+The O2 Competitive Analysis Dashboard now supports optional password protection. This feature allows you to secure access to the dashboard with a password while maintaining session-based authentication.
 
 ## Configuration
 

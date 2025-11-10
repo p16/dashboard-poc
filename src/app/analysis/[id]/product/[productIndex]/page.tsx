@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ChangeIcon from '@/components/ChangeIcon';
 import InsightIcon from '@/components/InsightIcon';
+import PriceSuggestionsComponent from '@/components/PriceSuggestions';
 import { ArrowLeft, Zap, Lightbulb } from 'lucide-react';
 
 interface ProductDetailsPageProps {
@@ -67,6 +68,16 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
             </div>
           </div>
         </div>
+
+        {/* Price Suggestions - Most Prominent Section */}
+        {product.price_suggestions && product.price_suggestions.length > 0 && (
+          <div className="mb-8">
+            <PriceSuggestionsComponent
+              suggestions={product.price_suggestions}
+              currentPrice={product.product_breakdown.price_per_month_GBP}
+            />
+          </div>
+        )}
 
         <div className="grid gap-8">
           {/* Side by Side: Recommended Changes and Key Insights */}

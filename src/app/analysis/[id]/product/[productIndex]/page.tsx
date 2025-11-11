@@ -199,7 +199,7 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
                       <td className="py-4 px-4">
                         <span className="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full">{comp.contract}</span>
                       </td>
-                      <td className="py-4 px-4 text-gray-700">{comp.data}GB</td>
+                      <td className="py-4 px-4 text-gray-700">{comp.data}</td>
                       <td className="py-4 px-4 text-gray-700">{comp.roaming}</td>
                       <td className="py-4 px-4 text-gray-700">{comp.speed}</td>
                       <td className="py-4 px-4 font-bold text-gray-900">£{comp.price_per_month_GBP}</td>

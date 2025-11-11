@@ -179,28 +179,35 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
           {/* Top Competitors */}
           <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Top Competitors</h2>
-            <div className="space-y-4">
-              {product.comparable_products.sort((a, b) => b.competitiveness_score - a.competitiveness_score).slice(0, 5).map((comp, compIndex) => (
-                <div key={compIndex} className="flex justify-between items-center p-4 bg-gray-50 rounded-lg border">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-2">
-                      <span className="font-semibold text-lg text-black-800">{comp.brand}</span>
-                      <span className="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full">{comp.contract}</span>
-                    </div>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-600">
-                      <span>{comp.data}GB Data</span>
-                      <span>{comp.roaming} Roaming</span>
-                      <span>{comp.speed} Speed</span>
-                      <span>Score: {comp.competitiveness_score}</span>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-2">{comp.notes}</p>
-                  </div>
-                  <div className="text-right ml-4">
-                    <div className="text-xl font-bold text-gray-900">£{comp.price_per_month_GBP}</div>
-                    <div className="text-sm text-gray-500">per month</div>
-                  </div>
-                </div>
-              ))}
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b-2 border-gray-200">
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Brand</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Contract</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Data</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Roaming</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Speed</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Price/Month</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {product.comparable_products.sort((a, b) => b.competitiveness_score - a.competitiveness_score).slice(0, 5).map((comp, compIndex) => (
+                    <tr key={compIndex} className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                      <td className="py-4 px-4 font-semibold text-gray-900">{comp.brand}</td>
+                      <td className="py-4 px-4">
+                        <span className="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full">{comp.contract}</span>
+                      </td>
+                      <td className="py-4 px-4 text-gray-700">{comp.data}GB</td>
+                      <td className="py-4 px-4 text-gray-700">{comp.roaming}</td>
+                      <td className="py-4 px-4 text-gray-700">{comp.speed}</td>
+                      <td className="py-4 px-4 font-bold text-gray-900">£{comp.price_per_month_GBP}</td>
+                      <td className="py-4 px-4 text-gray-700">{comp.competitiveness_score}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
 

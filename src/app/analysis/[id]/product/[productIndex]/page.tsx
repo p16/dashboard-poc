@@ -7,6 +7,10 @@ import PriceSuggestionsComponent from '@/components/PriceSuggestions';
 import { ArrowLeft, Zap, Lightbulb } from 'lucide-react';
 import { extractSourceName } from '@/lib/utils';
 
+// Force dynamic rendering and disable caching
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface ProductDetailsPageProps {
   params: Promise<{
     id: string;

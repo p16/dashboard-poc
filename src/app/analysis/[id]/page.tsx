@@ -32,6 +32,10 @@ import {
   PieChart
 } from 'lucide-react';
 
+// Force dynamic rendering and disable caching
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface AnalysisPageProps {
   params: Promise<{
     id: string;

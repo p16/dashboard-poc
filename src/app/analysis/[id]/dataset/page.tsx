@@ -4,6 +4,10 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import SortableDatasetTable from '@/components/SortableDatasetTable';
 
+// Force dynamic rendering and disable caching
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface CompetitiveDatasetPageProps {
   params: Promise<{
     id: string;

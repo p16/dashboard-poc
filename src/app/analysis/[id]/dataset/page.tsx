@@ -2,6 +2,7 @@ import { getAnalysisById } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import SortableDatasetTable from '@/components/SortableDatasetTable';
 
 interface CompetitiveDatasetPageProps {
   params: Promise<{
@@ -32,7 +33,7 @@ export default async function CompetitiveDatasetPage({ params }: CompetitiveData
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-8">
+      <main className="px-6 py-8">
         <div className="mb-8">
 
           <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
@@ -62,47 +63,7 @@ export default async function CompetitiveDatasetPage({ params }: CompetitiveData
           <h2 className="text-xl font-semibold text-gray-900 mb-4">
             All Plans by Provider ({analysis.full_competitive_dataset_all_plans?.length || 0} plans)
           </h2>
-          <div className="space-y-6">
-            {(() => {
-              // Group plans by brand
-              const groupedPlans = analysis.full_competitive_dataset_all_plans?.reduce((acc, plan) => {
-                if (!acc[plan.brand]) {
-                  acc[plan.brand] = [];
-                }
-                acc[plan.brand].push(plan);
-                return acc;
-              }, {} as Record<string, typeof analysis.full_competitive_dataset_all_plans>);
-
-              return Object.entries(groupedPlans || {}).map(([brand, plans]) => (
-                <div key={brand} className="border rounded-lg p-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                    {brand}
-                    <span className="ml-2 text-sm font-normal text-gray-500">({plans.length} plans)</span>
-                  </h3>
-                  <div className="space-y-2">
-                    {plans.map((plan, index) => (
-                      <div key={index} className="flex justify-between items-center p-3 bg-gray-50 rounded border">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-4">
-                            <span className="text-sm text-gray-600">{plan.data}</span>
-                            <span className="text-sm text-gray-600">{plan.roaming}</span>
-                            <span className="text-sm text-gray-600">{plan.speed}</span>
-                          </div>
-                          <div className="text-xs text-gray-500 mt-1">
-                            {plan.contract} • {plan.extras || 'No extras'} • {plan.notes}
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="font-bold text-gray-900">£{plan.price_per_month_GBP}/month</div>
-                          <div className="text-sm text-gray-600">Score: {plan.competitiveness_score}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ));
-            })()}
-          </div>
+          <SortableDatasetTable plans={analysis.full_competitive_dataset_all_plans || []} />
         </div>
       </main>
     </div>

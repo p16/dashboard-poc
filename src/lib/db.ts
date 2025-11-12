@@ -45,6 +45,7 @@ export interface ProductBreakdown {
   notes: string;
   competitiveness_score: number;
   source_URL?: string;
+  source?: string;
 }
 
 export interface PriceSuggestion {
@@ -61,6 +62,7 @@ export interface O2ProductAnalysis {
   o2_product_sentiments: string[];
   o2_product_changes: string[];
   price_suggestions?: PriceSuggestion[];
+  source?: string;
 }
 
 export interface FullDatasetPlan {
@@ -74,6 +76,7 @@ export interface FullDatasetPlan {
   notes: string;
   competitiveness_score: number;
   source_URL?: string;
+  source?: string;
 }
 
 export interface CompetitiveAnalysis {

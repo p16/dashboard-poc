@@ -2,6 +2,7 @@ import { getAnalysisById } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import PriceSummaryComponent from '@/components/PriceSummary';
+import { extractSourceName } from '@/lib/utils';
 import {
   CheckCircle,
   BarChart3,
@@ -256,6 +257,13 @@ export default async function AnalysisPage({ params }: AnalysisPageProps) {
                         <span className="text-gray-900">{product.roaming_tier}</span>
                       </div>
 
+                      {/* Source */}
+                      <div className="flex items-center text-sm">
+                        <Database className="w-4 h-4 text-gray-500 mr-2" />
+                        <span className="font-medium text-gray-700 mr-2">Source:</span>
+                        <span className="text-gray-900 capitalize">{extractSourceName(product.source)}</span>
+                      </div>
+
                       {/* Extras
                       <div className="flex items-center text-sm">
                         <svg className="w-4 h-4 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -280,6 +288,7 @@ export default async function AnalysisPage({ params }: AnalysisPageProps) {
                               <span className="text-gray-700">£{comp.price_per_month_GBP}/mo</span>
                             </div>
                             <div className="text-gray-600">{comp.data}GB • Score: {comp.competitiveness_score}</div>
+                            <div className="text-gray-500 capitalize mt-0.5">Source: {extractSourceName(comp.source)}</div>
                           </div>
                         ))}
                       </div>

@@ -5,6 +5,7 @@ import ChangeIcon from '@/components/ChangeIcon';
 import InsightIcon from '@/components/InsightIcon';
 import PriceSuggestionsComponent from '@/components/PriceSuggestions';
 import { ArrowLeft, Zap, Lightbulb } from 'lucide-react';
+import { extractSourceName } from '@/lib/utils';
 
 interface ProductDetailsPageProps {
   params: Promise<{
@@ -190,6 +191,7 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
                     <th className="text-left py-3 px-4 font-semibold text-gray-900">Speed</th>
                     <th className="text-left py-3 px-4 font-semibold text-gray-900">Price/Month</th>
                     <th className="text-left py-3 px-4 font-semibold text-gray-900">Score</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Source</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -204,6 +206,7 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
                       <td className="py-4 px-4 text-gray-700">{comp.speed}</td>
                       <td className="py-4 px-4 font-bold text-gray-900">£{comp.price_per_month_GBP}</td>
                       <td className="py-4 px-4 text-gray-700">{comp.competitiveness_score}</td>
+                      <td className="py-4 px-4 text-gray-600 text-sm capitalize">{extractSourceName(comp.source)}</td>
                     </tr>
                   ))}
                 </tbody>

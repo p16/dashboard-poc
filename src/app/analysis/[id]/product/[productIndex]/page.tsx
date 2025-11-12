@@ -144,39 +144,6 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
             </div>
           </div>
 
-          {/* Product Details */}
-          <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Product Details</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-              <div className="p-6 border border-gray-200 rounded-lg">
-                <div className="text-2xl font-bold text-gray-900 mb-1">{product.product_breakdown.data}GB</div>
-                <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Data Allowance</div>
-              </div>
-              <div className="p-6 border border-gray-200 rounded-lg">
-                <div className="text-2xl font-bold text-gray-900 mb-1">£{product.product_breakdown.price_per_month_GBP}</div>
-                <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Monthly Cost</div>
-              </div>
-              <div className="p-6 border border-gray-200 rounded-lg">
-                <div className="text-lg font-bold text-gray-900 mb-1">{product.product_breakdown.roaming}</div>
-                <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Roaming</div>
-              </div>
-              <div className="p-6 border border-gray-200 rounded-lg">
-                <div className="text-lg font-bold text-gray-900 mb-1">{product.product_breakdown.speed}</div>
-                <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Network Speed</div>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 border border-gray-200 rounded-lg">
-                <h3 className="font-semibold text-gray-900 mb-3 uppercase tracking-wide text-sm">Additional Features</h3>
-                <p className="text-gray-700 leading-relaxed">{product.product_breakdown.extras}</p>
-              </div>
-              <div className="p-6 border border-gray-200 rounded-lg">
-                <h3 className="font-semibold text-gray-900 mb-3 uppercase tracking-wide text-sm">Product Notes</h3>
-                <p className="text-gray-700 leading-relaxed">{product.product_breakdown.notes}</p>
-              </div>
-            </div>
-          </div>
-
           {/* Top Competitors */}
           <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Top Competitors</h2>
@@ -211,6 +178,39 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+
+          {/* Product Details */}
+          <div className="bg-white rounded-lg shadow-sm p-8 border border-gray-200">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Product Details</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+              <div className="p-6 border border-gray-200 rounded-lg">
+                <div className="text-2xl font-bold text-gray-900 mb-1">{product.product_breakdown.data}GB</div>
+                <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Data Allowance</div>
+              </div>
+              <div className="p-6 border border-gray-200 rounded-lg">
+                <div className="text-2xl font-bold text-gray-900 mb-1">£{product.product_breakdown.price_per_month_GBP}</div>
+                <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Monthly Cost</div>
+              </div>
+              <div className="p-6 border border-gray-200 rounded-lg">
+                <div className="text-lg font-bold text-gray-900 mb-1">{product.product_breakdown.roaming}</div>
+                <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Roaming</div>
+              </div>
+              <div className="p-6 border border-gray-200 rounded-lg">
+                <div className="text-lg font-bold text-gray-900 mb-1">{product.product_breakdown.speed}</div>
+                <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Network Speed</div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 border border-gray-200 rounded-lg">
+                <h3 className="font-semibold text-gray-900 mb-3 uppercase tracking-wide text-sm">Additional Features</h3>
+                <p className="text-gray-700 leading-relaxed">{product.product_breakdown.extras}</p>
+              </div>
+              <div className="p-6 border border-gray-200 rounded-lg">
+                <h3 className="font-semibold text-gray-900 mb-3 uppercase tracking-wide text-sm">Product Notes</h3>
+                <p className="text-gray-700 leading-relaxed">{product.product_breakdown.notes}</p>
+              </div>
             </div>
           </div>
 
